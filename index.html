@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Read news from news channels you wish</h1>
+    </header>
+    <main class="main">
+        <select name="news-source" id="news-sources">
+            <option value="hacker-news">Hacker news</option>
+            <option value="techcrunch">Tech crunch</option>
+            <option value="engadget">Engadget</option>
+            <option value="recode">Recode</option>
+            <option value="techradar">Tech radar</option>
+        </select>
+        <button class="find-news-button">Get news</button>
+        <section class="news-block"></section>
+    </main>
+    <footer class="footer">News are received via <a href="https://newsapi.org" target="_blank">newsapi.org</a></footer>
+    <script src="app.js"></script>
+</body>
+</html>
