@@ -5,25 +5,28 @@
     <title>News</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <h1>Read news from news channels you wish</h1>
-    </header>
-    <main class="main">
-        <section class="source-selection-block">
-            <select name="news-source" id="news-sources">
-                <option value="hacker-news">Hacker news</option>
-                <option value="techcrunch">Tech crunch</option>
-                <option value="engadget">Engadget</option>
-                <option value="recode">Recode</option>
-                <option value="techradar">Tech radar</option>
-            </select>
-            <button class="find-news-button">Get news</button>
-        </section>
-        <section class="news-block"></section>
-    </main>
-    <footer class="footer">News are received via <a href="https://newsapi.org" target="_blank">newsapi.org</a></footer>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Read news from news channels you wish</h1>
+        </header>
+        <main class="main">
+            <section class="source-selection-block">
+                <select name="news-source" id="news-sources">
+                    <option value="hacker-news">Hacker news</option>
+                    <option value="techcrunch">Tech crunch</option>
+                    <option value="engadget">Engadget</option>
+                    <option value="recode">Recode</option>
+                    <option value="techradar">Tech radar</option>
+                </select>
+                <button class="find-news-button">Get news</button>
+            </section>
+            <section class="news-block"></section>
+        </main>
+        <footer class="footer">News are received via <a href="https://newsapi.org" target="_blank">newsapi.org</a></footer>
+    </div>
     <script src="scripts/components/Article.js"></script>
     <script src="scripts/components/NewsBlock.js"></script>
     <script src="app.js"></script>
