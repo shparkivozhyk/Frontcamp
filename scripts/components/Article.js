@@ -1,7 +1,6 @@
 class Article {
 
     displayArticle(article) {
-        console.log(article);
         let articleWrapper = document.createElement('div');
         articleWrapper.classList.add('article-wrapper');
         if (article.title) {
