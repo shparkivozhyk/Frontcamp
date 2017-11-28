@@ -1,10 +1,10 @@
 function newsHandler() {
    const handler = new NewsBlock();
-   const link = handler.Link;
+   const link = handler.link;
    return handler.getNews(link);
 }
 
-document.querySelector('.find-news-button').addEventListener('click', newsHandler);
+document.getElementById('find-news-button').addEventListener('click', newsHandler);
 
 
 
