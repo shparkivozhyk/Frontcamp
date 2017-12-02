@@ -2,14 +2,12 @@ class NewsBlock {
 
     get link() {
         let selectedChannel = document.getElementById('news-sources').value;
-        return `${apiUrl}top-headlines?sources=${selectedChannel}&apiKey=${apiKey}`;
+        return `${config.apiUrl}top-headlines?sources=${selectedChannel}&apiKey=${config.apiKey}`;
     }
 
     getNews(link) {
         fetch(link)
-            .then(response => {
-                return response.json();
-            })
+            .then(response => response.json())
             .then(news => {
                 this.clearNewsBlock();
                 return this.displayNews(news.articles);
