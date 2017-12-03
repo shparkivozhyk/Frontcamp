@@ -6,4 +6,5 @@ function newsHandler() {
    return handler.getNews(link);
 }
 
+
 document.getElementById('find-news-button').addEventListener('click', newsHandler);
