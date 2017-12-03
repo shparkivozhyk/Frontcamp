@@ -3,7 +3,7 @@ function newsHandler() {
    const link = handler.link;
    return handler.getNews(link);
 }
-console.log('this console.log should be removed with plugin');
+console.log('this console.log will be removed with consolelog-plugin');
 
 document.getElementById('find-news-button').addEventListener('click', newsHandler);
 
