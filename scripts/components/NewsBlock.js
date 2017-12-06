@@ -1,23 +1,21 @@
-class NewsBlock {
+import {config} from '../config.js'
+import Article from './Article.js'
 
-    get Link() {
-        let channels = document.querySelector('#news-sources');
-        let selectedChannel = channels.options[channels.selectedIndex].value;
-        return `https://newsapi.org/v2/top-headlines?sources=${selectedChannel}&apiKey=47d4a25cf54f4af0a8ee36e2b5f0cdeb`;
+export default class NewsBlock {
+
+    get link() {
+        let selectedChannel = document.getElementById('news-sources').value;
+        return `${config.apiUrl}top-headlines?sources=${selectedChannel}&apiKey=${config.apiKey}`;
     }
 
     getNews(link) {
         fetch(link)
-            .then(response => {
-                let responseJSON = response.json();
-                return responseJSON;
-            })
+            .then(response => response.json())
             .then(news => {
                 this.clearNewsBlock();
                 return this.displayNews(news.articles);
             })
-            .catch(err => {
-                
+            .catch(err => {               
                 this.clearNewsBlock();
                 this.displayError();
                 console.error(err.message);
@@ -26,12 +24,12 @@ class NewsBlock {
 
     displayNews(...newsArray) {
         const news = newsArray[0];
-        let articles = document.createDocumentFragment();
-        let article = new Article();
+        let articles = '';
         for (let i = 0; i < news.length; i++) {
-            articles.append(article.displayArticle(news[i]));
+            let article = new Article(news[i]);
+            articles += article.displayArticle(news[i]);
         }
-        document.querySelector('.news-block').appendChild(articles);
+        document.querySelector('.news-block').innerHTML = articles;
     }
 
     displayError() {

@@ -18,7 +18,9 @@ body {
 
 .wrapper,
 .main {
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
     align-items: center;
 }
@@ -28,7 +30,8 @@ body {
 }
 
 .main {
-    flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
 .header,
@@ -42,13 +45,13 @@ body {
 }
 
 #news-sources,
-.find-news-button {
+#find-news-button {
     width: 40vw;
     height: 30px;
     font-size: 14px;
 }
 
-.find-news-button {
+#find-news-button {
     border: 0;
     background-color: #08562b;
     background-image: linear-gradient(to bottom, #08562b, #4fbf81);
@@ -87,7 +90,7 @@ body {
 
 @media all and (max-width: 768px), (max-device-width: 768px) {
     #news-sources,
-    .find-news-button {
+    #find-news-button {
         font-size: 16px;
     }
 }
@@ -99,14 +102,14 @@ body {
         width: 95vw;
     }
     #news-sources,
-    .find-news-button {
+    #find-news-button {
         font-size: 20px;
     }
 }
 
 @media all and (max-width: 480px), (max-device-width: 480px) {
     #news-sources,
-    .find-news-button {
+    #find-news-button {
         width: 95vw;
     }
     .source-selection-block {
@@ -114,7 +117,7 @@ body {
     }
 
     #news-sources,
-    .find-news-button {
+    #find-news-button {
         height: 45px;
         font-size: 22px;
     }
