@@ -1,4 +1,7 @@
-class NewsBlock {
+import {config} from '../config.js'
+import Article from './Article.js'
+
+export default class NewsBlock {
 
     get link() {
         let selectedChannel = document.getElementById('news-sources').value;

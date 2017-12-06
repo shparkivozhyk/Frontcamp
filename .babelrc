@@ -1,4 +1,3 @@
 {
-  "presets": ["babel-polyfill", "env"],
-  "plugins": ["./plugins/consolelog-plugin.js"]
+  "presets": ["env"]
 }
