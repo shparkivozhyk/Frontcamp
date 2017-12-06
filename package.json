@@ -17,6 +17,8 @@
     "build": "browserify scripts/app.js -o compiled/bundle.js -t [ babelify ]"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "promise-polyfill": "^6.1.0",
+    "whatwg-fetch": "^2.0.3"
   }
 }
