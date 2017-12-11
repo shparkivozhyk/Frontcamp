@@ -3,6 +3,7 @@ import "promise-polyfill"
 import "whatwg-fetch"
 import "../styles/styles.scss"
 import "../../node_modules/font-awesome/css/font-awesome.css"
+import "../../node_modules/typeface-sansita-one/index.css"
 
 function newsHandler() {
     import(
