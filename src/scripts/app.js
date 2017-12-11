@@ -1,7 +1,7 @@
 import "babel-polyfill"
 import "promise-polyfill"
 import "whatwg-fetch"
-import "../styles/styles.css"
+import "../styles/styles.scss"
 
 function newsHandler() {
     import(
