@@ -2,26 +2,36 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        app: './src/scripts/app.js'
+        app: './src/scripts/app.js',
+        test: './src/test/test.js'
+
     },
     output: {
         filename: '[name]-bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    module: {
+    resolveLoader: {
+        modules: ['node_modules', path.resolve(__dirname, 'loaders')]
+    },
+    module: {      
         rules: [
             {
                 test: /\.js$/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['preset-env'],
-                        plugins: ['syntax-dynamic-import']
-                    }
+                        presets: ['env']
+                    }  
                 }
-            }
-        ],
-        rules: [
+            },
+            {
+                test: /\.json$/,
+                use: [
+                    {
+                        loader:'custom-loader'
+                    }
+                ]
+            },
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
@@ -32,21 +42,21 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    }, 
+                    {
+                        loader: "css-loader"
+                    }, 
+                    {
+                        loader: "sass-loader",
+                    }
+                ]
             }
         ],
-        rules: [{
-            test: /\.scss$/,
-            use: [
-                {
-                    loader: "style-loader"
-                }, 
-                {
-                    loader: "css-loader"
-                }, 
-                {
-                    loader: "sass-loader",
-                }
-            ]
-        }]
-    }
+    }   
 };

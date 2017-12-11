@@ -2,7 +2,7 @@ import "babel-polyfill"
 import "promise-polyfill"
 import "whatwg-fetch"
 import "../styles/styles.scss"
-
+// import "../../node_modules/font-awesome/scss/font-awesome.scss"
 function newsHandler() {
     import(
     /* webpackChunkName: "lazynews-bundle" */
@@ -12,7 +12,7 @@ function newsHandler() {
             const handler = new Handler();
             const link = handler.link;
             return handler.getNews(link);
-    }); 
+    });
 }
 
 document.getElementById('find-news-button').addEventListener('click', (event) =>  newsHandler());
