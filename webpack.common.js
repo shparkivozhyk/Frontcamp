@@ -17,12 +17,15 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
-                    }  
-                }
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['env']
+                        }  
+                    }
+                     
+                ]
             },
             {
                 test: /\.json$/,
@@ -32,14 +35,22 @@ module.exports = {
                     }
                 ]
             },
-            {
-                test: /\.(png|jpg|gif)$/,
+            { 
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
                 use: [
                     {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192
-                        }
+                        loader: 'url-loader?limit=100000'
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader"
                     }
                 ]
             },
@@ -48,10 +59,10 @@ module.exports = {
                 use: [
                     {
                         loader: "style-loader"
-                    }, 
+                    },
                     {
                         loader: "css-loader"
-                    }, 
+                    },
                     {
                         loader: "sass-loader",
                     }

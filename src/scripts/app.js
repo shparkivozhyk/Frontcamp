@@ -2,7 +2,8 @@ import "babel-polyfill"
 import "promise-polyfill"
 import "whatwg-fetch"
 import "../styles/styles.scss"
-// import "../../node_modules/font-awesome/scss/font-awesome.scss"
+import "../../node_modules/font-awesome/css/font-awesome.css"
+
 function newsHandler() {
     import(
     /* webpackChunkName: "lazynews-bundle" */
