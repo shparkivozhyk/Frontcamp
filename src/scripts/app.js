@@ -4,21 +4,20 @@ import "whatwg-fetch"
 import "../styles/styles.scss"
 import "../../node_modules/font-awesome/css/font-awesome.css"
 import "../../node_modules/typeface-sansita-one/index.css"
+import {createStore} from "./Redux/createStore.js"
+import {reducer, getNews} from "./Redux/reducers.js"
+import NewsBlock from "./components/NewsBlock.js"
 
-function newsHandler() {
-    import(
-    /* webpackChunkName: "lazynews-bundle" */
-    /* webpackMode: "lazy" */
-    './components/NewsBlock.js').then(module => {
-            let Handler = module.default;
-            const handler = new Handler();
-            const link = handler.link;
-            return handler.getNews(link);
-    });
+
+const render = () =>  {
+    let newsBlock = new NewsBlock();
+    let state = store.getState();
+    return newsBlock.displayNews(state.news);   
 }
 
-document.getElementById('find-news-button').addEventListener('click', (event) =>  newsHandler());
+const store = createStore(reducer);
+store.subscribe(render);
 
-
-
-
+document.getElementById('find-news-button').addEventListener('click', (event) =>  {
+    store.dispatch(getNews);
+});
