@@ -6,11 +6,11 @@ import "../../node_modules/font-awesome/css/font-awesome.css"
 import "../../node_modules/typeface-sansita-one/index.css"
 import {createStore} from "./Redux/createStore.js"
 import {reducer, getNews} from "./Redux/reducers.js"
-import NewsBlock from "./components/NewsBlock.js"
+import {Singleton} from "./components/NewsBlock.js"
 
 
 const render = () =>  {
-    let newsBlock = new NewsBlock();
+    let newsBlock = Singleton.getNewsBlockInstance();
     let state = store.getState();
     return newsBlock.displayNews(state.news);   
 }

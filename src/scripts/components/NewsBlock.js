@@ -2,7 +2,6 @@ import {config} from '../config.js'
 import Article from './Article.js'
 
 export default class NewsBlock {
-
     get link() {
         let selectedChannel = document.getElementById('news-sources').value;
         return {
@@ -35,3 +34,16 @@ export default class NewsBlock {
     }
 
 }
+
+export const Singleton = (() => {
+    let instance;
+    const createInstance = () => new NewsBlock();
+    return {
+        getNewsBlockInstance: () => {
+            if (!instance) {
+                instance = createInstance();
+            }
+            return instance;
+        }
+    }
+})();
