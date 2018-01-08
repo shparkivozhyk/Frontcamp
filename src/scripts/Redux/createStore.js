@@ -1,7 +1,5 @@
 export const createStore = (reducer) => {
-    let state = {
-        cache: {}
-    };
+    let state = {};
     let listeners = [];
     const getState = () => state;
 
