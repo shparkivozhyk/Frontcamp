@@ -8,6 +8,8 @@ const reducer = (state, action) => {
         case 'DISPLAY_ERROR':
             handler.displayError(action.error);
             return {};
+        case 'default':
+                return state;
     }
 }
 
