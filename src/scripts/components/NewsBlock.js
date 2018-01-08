@@ -1,5 +1,5 @@
 import {config} from '../config.js'
-import Article from './Article.js'
+import {getArticle} from './Article.js'
 
 export default class NewsBlock {
     get link() {
@@ -14,8 +14,8 @@ export default class NewsBlock {
         const news = newsArray[0];
         let articles = '';
         for (let i = 0; i < news.length; i++) {
-            let article = new Article(news[i]);
-            articles += article.displayArticle(news[i]);
+            // let article = new Article(news[i]);
+            articles += getArticle(news[i]);
         }
         document.querySelector('.news-block').innerHTML = articles;
     }
