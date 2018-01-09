@@ -1,3 +1,9 @@
+/*
+    Observer pattern; 
+    Subject realization - list of listeners, subscribing for listeners,
+    sending notifications to listeners
+*/
+
 export const createStore = (reducer) => {
     let state = {};
     let listeners = [];

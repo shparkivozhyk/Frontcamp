@@ -13,6 +13,11 @@ const reducer = (state, action) => {
     }
 }
 
+/*
+    Proxy pattern (I'm not sure)
+    Allows to send request only if needed
+*/
+
 const getNews = (dispatch, state) => {
     const link = handler.link;
     if (state[link.selectedChannel]) {

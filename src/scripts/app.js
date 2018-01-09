@@ -8,7 +8,11 @@ import {createStore} from "./Redux/createStore.js"
 import {reducer, getNews} from "./Redux/reducers.js"
 import {Singleton} from "./components/NewsBlock.js"
 
+/*
+    Observer pattern: observer
+    Invokes when subject changes
 
+*/
 const render = () =>  {
     let newsBlock = Singleton.getNewsBlockInstance();
     let state = store.getState();

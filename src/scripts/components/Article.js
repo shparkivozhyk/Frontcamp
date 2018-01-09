@@ -1,3 +1,8 @@
+/*
+    Factory pattern
+    Allows to create different objects depending on its type
+*/
+
 export const getArticle = (news) => {
     if (news.urlToImage) {
         let article = new ArticleWithImage(news);

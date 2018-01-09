@@ -19,7 +19,7 @@ export default class NewsBlock {
         }
         document.querySelector('.news-block').innerHTML = articles;
     }
-
+    /*I believe it's a facade :)*/
     displayError(error) {
         this.clearNewsBlock();
         let errorElement = document.createElement('h2');
@@ -35,6 +35,10 @@ export default class NewsBlock {
 
 }
 
+/*
+    Singleton pattern
+    Used in app.js and allows not to create a lot of NewsBlock instances
+*/
 export const Singleton = (() => {
     let instance;
     const createInstance = () => new NewsBlock();
