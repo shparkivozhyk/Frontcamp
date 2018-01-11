@@ -14,8 +14,9 @@ export default class NewsBlock {
         const news = newsArray[0];
         let articles = '';
         for (let i = 0; i < news.length; i++) {
-            // let article = new Article(news[i]);
-            articles += getArticle(news[i]);
+            let article = getArticle(news[i]);
+            let articleTemplate = article.getArticleTemplate();
+            articles += articleTemplate;
         }
         document.querySelector('.news-block').innerHTML = articles;
     }
