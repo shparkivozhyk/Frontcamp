@@ -25,8 +25,9 @@ without _id.
 
 ```> db.restaurants.find({"grades.8.score": {$lt: 7}},{name: 1, _id: 0})```
 
-```{ "name" : "Silver Krust West Indian Restaurant" }
-{ "name" : "Pure Food" }```
+```{ "name" : "Silver Krust West Indian Restaurant" }```
+
+```{ "name" : "Pure Food" }```
 
 ## 3.5 ##
 What are _id and borough of “Seafood” (cuisine) restaurants which received at least one “B” grade in period from 2014-02-01 to 
