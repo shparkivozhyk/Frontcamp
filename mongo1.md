@@ -1,7 +1,7 @@
 ## 3.1 ##
 How many “Chinese” (cuisine) restaurants are in “Queens” (borough)?
 
-***>db.restaurants.find({cuisine: "Chinese", borough: "Queens"}).count()***
+<pre><code>>db.restaurants.find({cuisine: "Chinese", borough: "Queens"}).count()</code></pre>
 
 ```728```
 
@@ -35,31 +35,31 @@ What are _id and borough of “Seafood” (cuisine) restaurants which received a
 
 ***> db.restaurants.find({***
 
-***...         cuisine: "Seafood",***
+...         cuisine: "Seafood",
 
-***...         grades: {***
+...         grades: {
 
-***...             $elemMatch: {***
+...             $elemMatch: {
 
-***...                 grade: "B",***
+...                 grade: "B",
 
-***...                 date: {***
+...                 date: {
 
-***...                     $gt: ISODate('2014-02-01'),***
+...                     $gt: ISODate('2014-02-01'),
 
-***...                     $lt: ISODate('2014-03-01')***
+...                     $lt: ISODate('2014-03-01')
 
-***...                 }***
+...                 }
 
-***...             }***
+...             }
 
-***...         }***
+...         }
 
-***...     }, {***
+...     }, {***
 
-***...         borough: 1***
+...         borough: 1
 
-***...     })***
+...     })
 
 ```{ "_id" : ObjectId("5a5b1ae6456e28f7d50744b4"), "borough" : "Bronx" }```
 
