@@ -55,4 +55,4 @@ Create an index which will be used by this query and provide proof (from explain
 index is indeed used by the winning plan:
 **db.restaurants.find({ name: "Glorious Food" })**
 
-
+<pre><code>>db.restaurants.createIndex({name: 1})</pre></code>
