@@ -57,3 +57,11 @@ index is indeed used by the winning plan:
 
 <pre><code>>db.restaurants.createIndex({name: 1})</pre></code>
 ![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.1.jpg "4.1")
+
+## 4.3 ##
+Create an index to make this query covered and provide proof (from explain() or Compass UI) that it is
+indeed covered:
+**db.restaurants.find({ restaurant_id: "41098650" }, { _id: 0, borough: 1 })**
+
+<pre><code>> db.restaurants.createIndex({restaurant_id: 1, borough: 1})</code></pre>
+![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.3.jpg "4.3")
