@@ -76,6 +76,6 @@ Island”:
 **db.restaurants.find({ borough: "Queens", cuisine: "Pizza" }) – does not use index**
 
 <code>>db.restaurants.createIndex({cuisine: 1}, {partialFilterExpression: {borough: {$eq: 'Staten Island'}}})</code>
-![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.1.jpg "4.4.1"
-![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.2.jpg "4.4.2"
-![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.3.jpg "4.4.3"
+![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.1.jpg "4.4.1")
+![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.2.jpg "4.4.2")
+![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.3.jpg "4.4.3")
