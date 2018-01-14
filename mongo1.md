@@ -8,8 +8,8 @@ How many “Chinese” (cuisine) restaurants are in “Queens” (borough)?
 ## 3.2 ##
 What is the _id of the restaurant which has the grade with the highest ever score?
 
-> db.restaurants.find({},{restaurant_id: 1}).sort({"grades.score": -1}).limit(1)
-{ "_id" : ObjectId("5a5b1ae5456e28f7d50710a4"), "restaurant_id" : "40372466" }
+```> db.restaurants.find({},{restaurant_id: 1}).sort({"grades.score": -1}).limit(1)```
+```{ "_id" : ObjectId("5a5b1ae5456e28f7d50710a4"), "restaurant_id" : "40372466" }```
 
 ## 3.3 ##
 Add a grade { grade: "A", score: 7, date: ISODate() } to every restaurant in “Manhattan” (borough).
