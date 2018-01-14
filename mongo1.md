@@ -49,3 +49,10 @@ What are _id and borough of “Seafood” (cuisine) restaurants which received a
 ...     })</pre></code>
 <pre><code>{ "_id" : ObjectId("5a5b1ae6456e28f7d50744b4"), "borough" : "Bronx" }
 { "_id" : ObjectId("5a5b1ae6456e28f7d507472c"), "borough" : "Manhattan" }</code></pre>
+
+## 4.1 ##
+Create an index which will be used by this query and provide proof (from explain() or Compass UI) that the
+index is indeed used by the winning plan:
+**db.restaurants.find({ name: "Glorious Food" })**
+
+
