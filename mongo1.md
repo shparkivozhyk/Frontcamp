@@ -34,19 +34,33 @@ What are _id and borough of “Seafood” (cuisine) restaurants which received a
 2014-03-01? Use projection to include only _id and borough.
 
 ***> db.restaurants.find({***
+
 ***...         cuisine: "Seafood",***
+
 ***...         grades: {***
+
 ***...             $elemMatch: {***
+
 ***...                 grade: "B",***
+
 ***...                 date: {***
+
 ***...                     $gt: ISODate('2014-02-01'),***
+
 ***...                     $lt: ISODate('2014-03-01')***
+
 ***...                 }***
+
 ***...             }***
+
 ***...         }***
+
 ***...     }, {***
+
 ***...         borough: 1***
+
 ***...     })***
 
 ```{ "_id" : ObjectId("5a5b1ae6456e28f7d50744b4"), "borough" : "Bronx" }```
+
 ```{ "_id" : ObjectId("5a5b1ae6456e28f7d507472c"), "borough" : "Manhattan" }```
