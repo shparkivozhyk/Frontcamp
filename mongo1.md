@@ -1,7 +1,7 @@
 ## 3.1 ##
 How many “Chinese” (cuisine) restaurants are in “Queens” (borough)?
 
-**db.restaurants.find({cuisine: "Chinese", borough: "Queens"}).count()**
+***db.restaurants.find({cuisine: "Chinese", borough: "Queens"}).count()***
 
 ```728```
 
