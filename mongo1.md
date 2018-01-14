@@ -63,7 +63,7 @@ Create an index to make this query covered and provide proof (from explain() or 
 indeed covered:
 **db.restaurants.find({ restaurant_id: "41098650" }, { _id: 0, borough: 1 })**
 
-<pre><code>> db.restaurants.createIndex({restaurant_id: 1, borough: 1})</code></pre>
+<pre><code>>db.restaurants.createIndex({restaurant_id: 1, borough: 1})</code></pre>
 ![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.3.jpg "4.3")
 
 ## 4.4 ##
@@ -74,3 +74,8 @@ Island”:
 **db.restaurants.find({ borough: "Staten Island", name: "Bagel Land" }) – does not use index**
 
 **db.restaurants.find({ borough: "Queens", cuisine: "Pizza" }) – does not use index**
+
+<code>>db.restaurants.createIndex({cuisine: 1}, {partialFilterExpression: {borough: {$eq: 'Staten Island'}}})</code>
+![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.1.jpg "4.4.1"
+![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.2.jpg "4.4.2"
+![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.4.3.jpg "4.4.3"
