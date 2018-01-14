@@ -83,5 +83,5 @@ Island”:
 ## 4.5 ##
 Create an index to make query from task 3.4 covered and provide proof (from explain() or Compass UI) that
 it is indeed covered
-<pre><code>>db.restaurants.createIndex({"grades.8.score": 1, name: 1, _id: 1})</code></pre>
+<pre><code>> db.restaurants.createIndex({"grades.8.score": 1, name: 1})</code></pre>
 ![alt text](https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.5.jpg "4.5")
