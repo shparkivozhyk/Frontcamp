@@ -1,8 +1,9 @@
 ## 3.1 ##
 How many “Chinese” (cuisine) restaurants are in “Queens” (borough)?
 
-> db.restaurants.find({cuisine: "Chinese", borough: "Queens"}).count()
-728
+```db.restaurants.find({cuisine: "Chinese", borough: "Queens"}).count()```
+
+```728```
 
 ## 3.2 ##
 What is the _id of the restaurant which has the grade with the highest ever score?
