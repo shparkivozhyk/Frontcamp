@@ -56,3 +56,4 @@ index is indeed used by the winning plan:
 **db.restaurants.find({ name: "Glorious Food" })**
 
 <pre><code>>db.restaurants.createIndex({name: 1})</pre></code>
+[logo] https://github.com/shparkivozhyk/Frontcamp/blob/mongo1/mongo1-imgs/4.1.jpg
