@@ -33,7 +33,7 @@ without _id.
 What are _id and borough of “Seafood” (cuisine) restaurants which received at least one “B” grade in period from 2014-02-01 to 
 2014-03-01? Use projection to include only _id and borough.
 
-***> db.restaurants.find({***
+<pre><code>> db.restaurants.find({***
 
 ...         cuisine: "Seafood",
 
@@ -59,7 +59,7 @@ What are _id and borough of “Seafood” (cuisine) restaurants which received a
 
 ...         borough: 1
 
-...     })
+...     })</pre></code>
 
 ```{ "_id" : ObjectId("5a5b1ae6456e28f7d50744b4"), "borough" : "Bronx" }```
 
