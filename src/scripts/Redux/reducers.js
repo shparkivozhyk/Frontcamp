@@ -14,9 +14,45 @@ const reducer = (state, action) => {
 }
 
 /*
-    Proxy pattern (I'm not sure)
-    Allows to send request only if needed
+    Proxy pattern (draft)
 */
+const NewsProxy = (function() {
+    let cache = {status: 'resolved'};
+    return {
+        isInCache: function(source) {
+            return cache[source.selectedChannel];
+        },
+        updateNews: function(source) {
+            if (!this.isInCache(source)) {
+                cache.status = 'pending';
+                this.sendNewsResponse(source);
+            }
+        },
+        setInCache: function(channel, results) {
+                cache[channel] = results;
+        },
+        sendNewsResponse: function(source) {
+                fetch(source.link)
+                        .then(response => response.json())
+                        .then(responseJson => {
+                            let articles = responseJson.articles;
+                            this.setInCache(source.selectedChannel, articles);
+                            cache.status = 'resolved';
+                        })
+        },
+        getNews: function(channel) {
+            if (status === 'resolved') {
+                return cache[channel];
+            }
+            else {
+                setTimeout(this.getNews, 1000);
+            }
+        }
+
+
+    }
+})();
+
 
 const getNews = (dispatch, state) => {
     const link = handler.link;

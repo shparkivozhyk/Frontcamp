@@ -13,14 +13,15 @@ export default class NewsBlock {
     displayNews(...newsArray) {
         const news = newsArray[0];
         let articles = '';
-        for (let i = 0; i < news.length; i++) {
-            let article = getArticle(news[i]);
+        let iterator = new Iterator(news);
+        iterator.forEach((item) => {
+            let article = getArticle(item);
             let articleTemplate = article.getArticleTemplate();
             articles += articleTemplate;
-        }
+        });
         document.querySelector('.news-block').innerHTML = articles;
     }
-    /*I believe it's a facade :)*/
+
     displayError(error) {
         this.clearNewsBlock();
         let errorElement = document.createElement('h2');
@@ -32,6 +33,29 @@ export default class NewsBlock {
 
     clearNewsBlock() {
         document.querySelector('.news-block').innerHTML = '';
+    }
+
+}
+
+class Iterator {
+    constructor(items) {
+        this.index = 0;
+        this.items = items;
+    }
+    toFirst() {
+        this.index = 0;
+        return this.next();
+    }
+    next() {
+        return this.items[++this.index];
+    }
+    isLast() {
+        return this.index >= this.items.length;
+    }
+    forEach(cb) {
+        for (let item = this.items[0]; !this.isLast(); item = this.next()) {
+            cb(item);
+        }
     }
 
 }
