@@ -90,7 +90,7 @@ db.airlines.aggregate([
 { "_id" : "Latvia", "carriers" : [ "JetClub AG", "Blue Jet SP Z o o", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways" ] }
 </code></pre>
 
-### 4.What are the carriers which flue the most number of passengers from the United State to either Greece, Italy or Spain? Find top 10 carriers, but provide the last 7 carriers (do not include the first 3). Show result as { "_id" : "<carrier>", "total" : 999}
+### 4. What are the carriers which flue the most number of passengers from the United State to either Greece, Italy or Spain? Find top 10 carriers, but provide the last 7 carriers (do not include the first 3). Show result as { "_id" : "<carrier>", "total" : 999}
 <pre></code>
 db.airlines.aggregate([
     {
@@ -117,7 +117,7 @@ db.airlines.aggregate([
     }
 ])
 </code></pre>
-<code><pre>
+<pre><code>
 { "_id" : "United Air Lines Inc.", "total" : 54029502 }
 { "_id" : "JetBlue Airways", "total" : 21433163 }
 { "_id" : "SkyWest Airlines Inc.", "total" : 19482179 }
@@ -125,4 +125,6 @@ db.airlines.aggregate([
 { "_id" : "Spirit Air Lines", "total" : 13268045 }
 { "_id" : "ExpressJet Airlines Inc.", "total" : 9619104 }
 { "_id" : "Frontier Airlines Inc.", "total" : 9214843 }
-</pre></code>
+</code></pre>
+
+### 5. Find the city (originCity) with the highest sum of passengers for each state (originState) of the United States (originCountry). Provide the city for the first 5 states ordered by state alphabetically (you should see the city for Alaska, Arizona and etc). Show result as { "totalPassengers" : 999, "location" : { "state" : "abc", "city" : "xyz" } }
