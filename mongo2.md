@@ -71,3 +71,23 @@ db.airlines.aggregate([
 </code></pre>
 
 ### 3. Which carriers provide flights to Latvia (destCountry)? Show result as one document { "_id" : "Latvia", "carriers" : [ "carrier1", " carrier2", ...] }
+
+<pre><code>
+db.airlines.aggregate([
+    {
+        $match: {
+            destCountry: "Latvia", 
+        }
+    },
+    {
+        $group: {
+            _id: "$destCountry",
+            carriers: {$push: "$carrier"}
+        }
+    }
+])
+</code></pre>
+
+<pre><code>
+{ "_id" : "Latvia", "carriers" : [ "JetClub AG", "Blue Jet SP Z o o", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways" ] }
+</code></pre>
