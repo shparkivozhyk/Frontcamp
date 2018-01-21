@@ -63,7 +63,6 @@ db.airlines.aggregate([
     }
 ])
 </code></pre>
-
 <pre><code>
 { "avgPassengers" : 8052.380952380952, "city" : "Abu Dhabi, United Arab Emirates" }
 { "avgPassengers" : 7176.596638655462, "city" : "Dubai, United Arab Emirates" }
@@ -87,7 +86,8 @@ db.airlines.aggregate([
     }
 ])
 </code></pre>
-
 <pre><code>
 { "_id" : "Latvia", "carriers" : [ "JetClub AG", "Blue Jet SP Z o o", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways" ] }
 </code></pre>
+
+### 4.What are the carriers which flue the most number of passengers from the United State to either Greece, Italy or Spain? Find top 10 carriers, but provide the last 7 carriers (do not include the first 3). Show result as { "_id" : "<carrier>", "total" : 999}
