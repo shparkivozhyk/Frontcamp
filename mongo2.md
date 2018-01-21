@@ -1,6 +1,6 @@
 # Aggregating Airlines Collection 
 
-## 1.How manyrecordsdoes each airline class have? Use $projectto show result as { class: "Z", total: 999}
+### 1.How many records does each airline class have? Use $project to show result as { class: "Z", total: 999}
 
 <pre><code>
 db.airlines.aggregate([
