@@ -69,3 +69,5 @@ db.airlines.aggregate([
 { "avgPassengers" : 7176.596638655462, "city" : "Dubai, United Arab Emirates" }
 { "avgPassengers" : 7103.333333333333, "city" : "Guangzhou, China" }
 </code></pre>
+
+### 3. Which carriers provide flights to Latvia (destCountry)? Show result as one document { "_id" : "Latvia", "carriers" : [ "carrier1", " carrier2", ...] }
