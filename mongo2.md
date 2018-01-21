@@ -91,3 +91,38 @@ db.airlines.aggregate([
 </code></pre>
 
 ### 4.What are the carriers which flue the most number of passengers from the United State to either Greece, Italy or Spain? Find top 10 carriers, but provide the last 7 carriers (do not include the first 3). Show result as { "_id" : "<carrier>", "total" : 999}
+<pre></code>
+db.airlines.aggregate([
+    {
+        $match: {
+            originCountry: "United States"
+        }
+    },
+    {
+        $group: {
+            _id: "$carrier",
+            total: {$sum: "$passengers"}
+        }
+    },
+    {
+        $sort: {
+            total: -1
+        }
+    },
+    {
+        $skip: 3
+    },
+    {
+        $limit: 7
+    }
+])
+</code></pre>
+<code><pre>
+{ "_id" : "United Air Lines Inc.", "total" : 54029502 }
+{ "_id" : "JetBlue Airways", "total" : 21433163 }
+{ "_id" : "SkyWest Airlines Inc.", "total" : 19482179 }
+{ "_id" : "Alaska Airlines Inc.", "total" : 14600696 }
+{ "_id" : "Spirit Air Lines", "total" : 13268045 }
+{ "_id" : "ExpressJet Airlines Inc.", "total" : 9619104 }
+{ "_id" : "Frontier Airlines Inc.", "total" : 9214843 }
+</pre></code>
