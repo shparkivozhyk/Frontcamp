@@ -128,3 +128,61 @@ db.airlines.aggregate([
 </code></pre>
 
 ### 5. Find the city (originCity) with the highest sum of passengers for each state (originState) of the United States (originCountry). Provide the city for the first 5 states ordered by state alphabetically (you should see the city for Alaska, Arizona and etc). Show result as { "totalPassengers" : 999, "location" : { "state" : "abc", "city" : "xyz" } }
+<pre><code>
+db.airlines.aggregate([
+    {
+        $match: {
+            originCountry: "United States"
+        }
+    },
+    {
+        $group: {
+            _id: {
+                state: "$originState",
+                city: "$originCity"
+            },
+            totalPassengers: {
+                $sum: "$passengers"
+            }
+        }
+    },
+    {
+        $sort: {
+            "_id.state": 1,
+            totalPassengers: -1
+        }
+    },
+    {
+        $group: {
+            _id: "$_id.state",
+            city: {$first: "$_id.city"},
+            maxPassengers: {$first: "$totalPassengers"}
+        }
+    },
+    {
+        $sort: {
+            _id: 1
+        }
+    },
+    {
+        $project: {
+            _id: 0,
+            location: {
+                city: "$city",
+                state: "$_id"
+            },
+            maxPassengers: 1
+        }
+    },
+    {
+        $limit: 5
+    }
+])
+</code></pre>
+<pre><code>
+{ "maxPassengers" : 760120, "location" : { "city" : "Birmingham, AL", "state" : "Alabama" } }
+{ "maxPassengers" : 1472404, "location" : { "city" : "Anchorage, AK", "state" : "Alaska" } }
+{ "maxPassengers" : 13152753, "location" : { "city" : "Phoenix, AZ", "state" : "Arizona" } }
+{ "maxPassengers" : 571452, "location" : { "city" : "Little Rock, AR", "state" : "Arkansas" } }
+{ "maxPassengers" : 23701556, "location" : { "city" : "Los Angeles, CA", "state" : "California" } }
+</code></pre>
