@@ -186,3 +186,63 @@ db.airlines.aggregate([
 { "maxPassengers" : 571452, "location" : { "city" : "Little Rock, AR", "state" : "Arkansas" } }
 { "maxPassengers" : 23701556, "location" : { "city" : "Los Angeles, CA", "state" : "California" } }
 </code></pre>
+
+# Aggregate Enron collection
+### Which pair of people have the greatest number of messages in the dataset?
+<pre><code>
+db.enron.aggregate([
+    {
+        $project: {
+            from: "$headers.From",
+            to: "$headers.To"
+        }
+    },
+    {
+        $unwind: "$to"
+    },
+    {
+        $group: {
+            _id: {
+                id: "$_id",
+                from: "$from"
+            },
+            to: {
+                $addToSet: "$to"
+            }
+        }
+    },
+    {
+        $unwind: "$to"
+    },
+    {
+        $group: {
+            _id: {
+                from: "$_id.from",
+                to: "$to"
+            },
+            messagesNumber: {
+                $sum: 1
+            }
+        }
+    },
+    {
+        $sort: {
+            messagesNumber: -1
+        }
+    },
+    {
+        $project: {
+            _id:0,
+            from: "$_id.from",
+            to: "$_id.to",
+            messagesNumber: "$messagesNumber"
+        }
+    },
+    {
+        $limit: 1
+    }
+])
+</code></pre>
+<pre><code>
+{ "from" : "susan.mara@enron.com", "to" : "jeff.dasovich@enron.com", "messagesNumber" : 750 }
+</code></pre>
