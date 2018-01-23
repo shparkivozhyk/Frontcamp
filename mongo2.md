@@ -81,13 +81,13 @@ db.airlines.aggregate([
     {
         $group: {
             _id: "$destCountry",
-            carriers: {$push: "$carrier"}
+            carriers: {$addToSet: "$carrier"}
         }
     }
 ])
 </code></pre>
 <pre><code>
-{ "_id" : "Latvia", "carriers" : [ "JetClub AG", "Blue Jet SP Z o o", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways", "Uzbekistan Airways" ] }
+{ "_id" : "Latvia", "carriers" : [ "Uzbekistan Airways", "Blue Jet SP Z o o", "JetClub AG" ] }}
 </code></pre>
 
 ### 4. What are the carriers which flue the most number of passengers from the United State to either Greece, Italy or Spain? Find top 10 carriers, but provide the last 7 carriers (do not include the first 3). Show result as { "_id" : "<carrier>", "total" : 999}
