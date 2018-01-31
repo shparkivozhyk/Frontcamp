@@ -18,6 +18,20 @@ router.route('/blogs/:blog_id')
     .get(function(req, res) {
         res.send(blogs[req.params.blog_id]);
     })
+    .post(function(req, res) {
+    	var textOfNewPost = 'I am a new post';
+    	blogs[req.params.blog_id] = textOfNewPost;
+    	res.send(blogs[req.params.blog_id]);
+    })
+    .put(function(req, res) {
+    	var valueToReplace = 'I am replaced value';
+    	blogs[req.params.blog_id] = valueToReplace;
+    	res.send(blogs[req.params.blog_id]);
+    })
+    .delete(function(req, res) {
+    	blogs[req.params.blog_id] = null;
+    	res.send(blogs);
+    })
 
 
 app.get('*', function(req, res) {
