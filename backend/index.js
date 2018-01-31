@@ -6,8 +6,8 @@ const app = express();
 app.use('/', router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'true'}));
-// app.set('views', './views');
-// app.set('view engine', 'pug');
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 router.route('/blogs')
     .get(function(req, res) {
@@ -21,7 +21,6 @@ router.route('/blogs/:blog_id')
 
 
 app.get('*', function(req, res) {
-    res.sendFile(__dirname + '/views/index.html');
-    // res.render('index', {title: 'Hey', message: 'Hello there!'});
+    res.render('index', {title: 'Unknown page', message: req.url});
 })
 app.listen(3000);
