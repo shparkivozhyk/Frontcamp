@@ -1,0 +1,34 @@
+html
+  head
+    title!= "All Blogs"
+    style
+        include ../styles/styles.css
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js')
+  body
+    mixin blog(data)
+        .blog
+            h1!= data.title
+            h2!= data.author
+            p!= data.body
+            p!= data.date.toLocaleString()
+
+    mixin formInput(name)
+        label(for=name)!= name
+        input.formInput(
+            type='text'
+            name=name
+            id=name
+        )
+
+    each val in blogs
+        +blog(val)
+
+    form.blogForm
+        +formInput('title')
+        +formInput('author')
+        +formInput('body')
+        +formInput('blog_id')
+        button#createBlog Create new blog
+
+    script
+        include ../scripts/script.js

@@ -1,0 +1,18 @@
+.blog {
+    border: 1px solid green;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.formInput {
+    display: block;
+}
+
+.blogForm {
+    border: 1px solid red;
+    padding: 10px;
+}
+
+#body, #blog_id {
+    display: block;
+}

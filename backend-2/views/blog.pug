@@ -1,0 +1,23 @@
+html
+  head
+    title!= blog.title
+    style
+        include ../styles/styles.css
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js')
+  body
+    .blog
+        h1!= blog.title
+        h2!= blog.author
+        p!= blog.body
+        p!= blog.date.toLocaleString()
+
+    form.blogForm
+            label(for="body") Blog text
+            input#body
+            label(for="blog_id") Blog id
+            input#blog_id
+            button#removeBlog Remove blog
+            button#updateBlog Update blog
+
+    script
+        include ../scripts/script.js
