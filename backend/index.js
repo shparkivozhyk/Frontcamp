@@ -17,7 +17,7 @@ router.route('/blogs')
 
 router.route('/blogs/:blog_id')
     .get(function(req, res) {
-        res.send(blogs[req.blog_id]);
+        res.send(blogs[req.params.blog_id]);
     })
     .post(function(req, res) {
     	var textOfNewPost = 'I am a new post';
