@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const blogs = require('./jsons/blogs.json');
+const logger = require('./logger');
 const router = express.Router();
 const app = express();
 app.use('/', router);
@@ -16,7 +17,7 @@ router.route('/blogs')
 
 router.route('/blogs/:blog_id')
     .get(function(req, res) {
-        res.send(blogs[req.params.blog_id]);
+        res.send(blogs[req.blog_id]);
     })
     .post(function(req, res) {
     	var textOfNewPost = 'I am a new post';
@@ -32,7 +33,6 @@ router.route('/blogs/:blog_id')
     	blogs[req.params.blog_id] = null;
     	res.send(blogs);
     })
-
 
 app.get('*', function(req, res) {
     res.render('index', {title: 'Unknown page', message: req.url});
