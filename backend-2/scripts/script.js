@@ -21,7 +21,11 @@ create.click(function() {
 });
 
 remove.click(function() {
-
+    let id = blog_id.val();
+    $.ajax({
+        method:"DELETE",
+        url: `/blogs/${id}`
+    })
 })
 update.click(function() {
     let dataToSend = {

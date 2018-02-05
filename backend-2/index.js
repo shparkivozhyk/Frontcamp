@@ -40,7 +40,7 @@ router.route('/blogs/:blog_id')
     .get(function(req, res) {
         Blog.find({blog_id: req.params.blog_id}, function(err, blog) {
             if (err) {
-                logger.error(err.message);
+                // logger.error(err.message);
                 res.send(err.message);
 
             }
@@ -55,14 +55,17 @@ router.route('/blogs/:blog_id')
     
     .put(function(req, res) {
         console.log('put is working');
-        console.log(req.body);
-        Blog.findOneAndUpdate({blog_id: req.body.blog_id}, {body: req.body.body}, {new: true}, function(err, blog) {
-            if (err) res.send(err);
+        console.log(req.params);
+        var query = {blog_id: req.params.blog_id};
+        Blog.findOneAndUpdate(query, {body: req.body.body}, function(err, blog) {
+            if (err) res.send(err.message);
             console.log(blog);
         })
     })
     .delete(function(req, res) {
-
+        Blog.findOneAndRemove({blog_id: req.params.blog_id}, function(err, blogs) {
+            if (err) res.send(err);
+        })
     })
 
 app.get('*', function(req, res) {
