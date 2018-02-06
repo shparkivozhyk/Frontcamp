@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+// const methodOverride = require('method-override');
 const router = express.Router();
 const app = express();
 const logger = require('./logger');
+const errorHandler = require('./scripts/errorHandler');
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use('/', router);
@@ -40,9 +42,7 @@ router.route('/blogs/:blog_id')
     .get(function(req, res) {
         Blog.find({blog_id: req.params.blog_id}, function(err, blog) {
             if (err) {
-                // logger.error(err.message);
                 res.send(err.message);
-
             }
             else if (!blog.length) {
                 res.render('index', {title: 'Blog doesn\'t exist', message: req.url});
@@ -51,15 +51,11 @@ router.route('/blogs/:blog_id')
                 res.render('blog', {blog: blog[0]});
             }
         });
-    })
-    
+    })  
     .put(function(req, res) {
-        console.log('put is working');
-        console.log(req.params);
         var query = {blog_id: req.params.blog_id};
-        Blog.findOneAndUpdate(query, {body: req.body.body}, function(err, blog) {
+        Blog.findOneAndUpdate(query, { $set: { body: req.body.body }}, function(err, blog) {
             if (err) res.send(err.message);
-            console.log(blog);
         })
     })
     .delete(function(req, res) {
@@ -67,7 +63,6 @@ router.route('/blogs/:blog_id')
             if (err) res.send(err);
         })
     })
-
 app.get('*', function(req, res) {
     res.render('index', {title: 'Unknown page', message: req.url});
 })

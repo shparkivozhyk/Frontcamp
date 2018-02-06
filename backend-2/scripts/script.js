@@ -30,11 +30,11 @@ remove.click(function() {
 update.click(function() {
     let dataToSend = {
         "body": body.val(),
-        "blog_id": blog_id.val()
     };
     let id = blog_id.val();
     $.ajax({
         method: "PUT",
-        url: `/blogs/${id}`
+        url: `/blogs/${id}`,
+        data: dataToSend
     });
 });
