@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const methodOverride = require('method-override');
 const router = express.Router();
 const app = express();
 const logger = require('./logger');
@@ -39,10 +38,10 @@ router.route('/blogs')
     })
 
 router.route('/blogs/:blog_id')
-    .get(function(req, res) {
-        Blog.find({blog_id: req.params.blog_id}, function(err, blog) {
+    .get(function(err, req, res, next) {
+        Blog.find({blog_d: req.params.blog_id}, function(err, blog) {
             if (err) {
-                res.send(err.message);
+                errorHandler(err, req, res, next);
             }
             else if (!blog.length) {
                 res.render('index', {title: 'Blog doesn\'t exist', message: req.url});
@@ -63,7 +62,11 @@ router.route('/blogs/:blog_id')
             if (err) res.send(err);
         })
     })
+
+app.use(function(err, req, res, next) {
+    errorHandler(err, req, res, next);
+});
 app.get('*', function(req, res) {
     res.render('index', {title: 'Unknown page', message: req.url});
-})
+});
 app.listen(3000);
