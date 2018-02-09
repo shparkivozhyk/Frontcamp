@@ -16,3 +16,7 @@
 #body, #blog_id {
     display: block;
 }
+
+#userName, #password, #submitForm {
+    display: block;
+}

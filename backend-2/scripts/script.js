@@ -5,6 +5,26 @@ const title = $("#title");
 const author = $("#author");
 const body = $("#body");
 const blog_id = $("#blog_id");
+const user_name = $("#userName");
+const password = $("#password");
+const sign_in = $("#signIn");
+const sign_up = $("#signUp");
+
+sign_in.click(function() {
+
+});
+
+sign_up.click(function() {
+    let dataToSend = {
+        "login": user_name.val(),
+        "password": password.val()
+    };
+    $.ajax({
+        "method": "POST",
+        "data": dataToSend,
+        "url": '/login'
+    });
+})
 
 create.click(function() {
     let dataToSend = {

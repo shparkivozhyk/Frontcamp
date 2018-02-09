@@ -2,8 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
 const app = express();
-const logger = require('./logger');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const authorization = require('./scripts/authorization');
 const errorHandler = require('./scripts/errorHandler');
+const logger = require('./logger');
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use('/', router);
@@ -13,6 +16,14 @@ app.set('view engine', 'pug');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
 const Blog = require('./models/Blog');
+const User = require('./models/User');
+
+app.post('/login', function(req, res) {
+    var login = req.body.login;
+    var password = req.body.password;
+    authorization(app, login, password);
+})
+
 router.route('/blogs')
     .get(function(req, res) {
         Blog.find(function(err, blogs) {
