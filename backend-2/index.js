@@ -18,7 +18,11 @@ mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/
 const Blog = require('./models/Blog');
 const User = require('./models/User');
 
+app.get('/login', function(req, res) {
+    res.render('user', {User: 'login'});
+})
 app.post('/login', function(req, res) {
+    console.log(req.body);
     var login = req.body.login;
     var password = req.body.password;
     authorization(app, login, password);
@@ -28,7 +32,6 @@ router.route('/blogs')
     .get(function(req, res) {
         Blog.find(function(err, blogs) {
             if (err) {
-                logger.error(err.message);
                 res.send(err.message);
             }
             res.render('blogs', {blogs: blogs})
@@ -52,7 +55,7 @@ router.route('/blogs/:blog_id')
     .get(function(err, req, res, next) {
         Blog.find({blog_d: req.params.blog_id}, function(err, blog) {
             if (err) {
-                errorHandler(err, req, res, next);
+                res.send(err.message);
             }
             else if (!blog.length) {
                 res.render('index', {title: 'Blog doesn\'t exist', message: req.url});

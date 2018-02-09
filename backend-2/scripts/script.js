@@ -11,7 +11,16 @@ const sign_in = $("#signIn");
 const sign_up = $("#signUp");
 
 sign_in.click(function() {
-
+    let dataToSend = {
+        "login": user_name.val(),
+        "password": password.val()
+    };
+    console.log(dataToSend);
+    $.ajax({
+        "method": "POST",
+        "data": dataToSend,
+        "url": '/login'
+    });
 });
 
 sign_up.click(function() {
@@ -19,6 +28,7 @@ sign_up.click(function() {
         "login": user_name.val(),
         "password": password.val()
     };
+    console.log(dataToSend);
     $.ajax({
         "method": "POST",
         "data": dataToSend,
