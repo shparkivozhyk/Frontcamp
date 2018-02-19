@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
 const app = express();
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const authorization = require('./scripts/authorization');
+// const passport = require('passport');
+// const LocalStrategy = require('passport-local').Strategy;
+// const authorization = require('./scripts/authorization');
 const errorHandler = require('./scripts/errorHandler');
 const logger = require('./logger');
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -12,21 +12,19 @@ app.use(bodyParser.json());
 app.use('/', router);
 app.set('views', './views');
 app.set('view engine', 'pug');
-
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
 const Blog = require('./models/Blog');
-const User = require('./models/User');
 
-app.get('/login', function(req, res) {
-    res.render('user', {User: 'login'});
-})
-app.post('/login', function(req, res) {
-    console.log(req.body);
-    var login = req.body.login;
-    var password = req.body.password;
-    authorization(app, login, password);
-})
+// router.route('/login')
+//     .get(function(req, res) {
+//         res.render('user', {User: 'login'});
+//     })
+//     .post(function(req, res) {
+//         console.log('ssssdddd');
+//         passport.authenticate('local', { successRedirect: '/blogs', failureRedirect: '/login'});
+//         console.log('ddrrrrdsaa');
+//     })
 
 router.route('/blogs')
     .get(function(req, res) {
