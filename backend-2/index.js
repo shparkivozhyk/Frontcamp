@@ -2,29 +2,31 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
 const app = express();
-// const passport = require('passport');
-// const LocalStrategy = require('passport-local').Strategy;
-// const authorization = require('./scripts/authorization');
-const errorHandler = require('./scripts/errorHandler');
-const logger = require('./logger');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const authorization = require('./scripts/authorization');
+authorization(app);
+// const errorHandler = require('./scripts/errorHandler');
+// const logger = require('./logger');
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use('/', router);
 app.set('views', './views');
 app.set('view engine', 'pug');
+const Blog = require('./models/Blog');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
-const Blog = require('./models/Blog');
 
-// router.route('/login')
-//     .get(function(req, res) {
-//         res.render('user', {User: 'login'});
-//     })
-//     .post(function(req, res) {
-//         console.log('ssssdddd');
-//         passport.authenticate('local', { successRedirect: '/blogs', failureRedirect: '/login'});
-//         console.log('ddrrrrdsaa');
-//     })
+router.route('/login')
+    .get(function(req, res) {
+        res.render('user', {User: 'login'});
+    })
+    .post(function(req, res) {
+        console.log('ssssdddd');
+        passport.authenticate({ successRedirect: '/blogs', failureRedirect: '/login2'});
+        console.log('ddrrrrdsaa');
+    })
+
 
 router.route('/blogs')
     .get(function(req, res) {
@@ -50,8 +52,8 @@ router.route('/blogs')
     })
 
 router.route('/blogs/:blog_id')
-    .get(function(err, req, res, next) {
-        Blog.find({blog_d: req.params.blog_id}, function(err, blog) {
+    .get(function(req, res) {
+        Blog.find({blog_id: req.params.blog_id}, function(err, blog) {
             if (err) {
                 res.send(err.message);
             }
@@ -75,9 +77,9 @@ router.route('/blogs/:blog_id')
         })
     })
 
-app.use(function(err, req, res, next) {
-    errorHandler(err, req, res, next);
-});
+// app.use(function(err, req, res, next) {
+//     errorHandler(err, req, res, next);
+// });
 app.get('*', function(req, res) {
     res.render('index', {title: 'Unknown page', message: req.url});
 });

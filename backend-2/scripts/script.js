@@ -11,7 +11,7 @@ const sign_in = $("#signIn");
 const sign_up = $("#signUp");
 
 sign_in.click(function() {
-    let dataToSend = {
+    var dataToSend = {
         "login": user_name.val(),
         "password": password.val()
     };
@@ -24,7 +24,7 @@ sign_in.click(function() {
 });
 
 sign_up.click(function() {
-    let dataToSend = {
+    var dataToSend = {
         "login": user_name.val(),
         "password": password.val()
     };
@@ -37,12 +37,13 @@ sign_up.click(function() {
 })
 
 create.click(function() {
-    let dataToSend = {
+    var dataToSend = {
         "title": title.val(),
         "author": author.val(),
         "body": body.val(),
         "blog_id": blog_id.val()
     };
+    console.log('dataToSend: ', dataToSend);
     $.ajax({
         method: "POST",
         data: dataToSend,
@@ -51,20 +52,20 @@ create.click(function() {
 });
 
 remove.click(function() {
-    let id = blog_id.val();
+    var id = blog_id.val();
     $.ajax({
         method:"DELETE",
-        url: `/blogs/${id}`
+        url: '/blogs/'+id
     })
 })
 update.click(function() {
-    let dataToSend = {
+    var dataToSend = {
         "body": body.val(),
     };
-    let id = blog_id.val();
+    var id = blog_id.val();
     $.ajax({
         method: "PUT",
-        url: `/blogs/${id}`,
+        url: '/blogs/'+id,
         data: dataToSend
     });
 });
