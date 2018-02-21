@@ -5,14 +5,14 @@ const title = $("#title");
 const author = $("#author");
 const body = $("#body");
 const blog_id = $("#blog_id");
-const user_name = $("#userName");
+const user_name = $("#username");
 const password = $("#password");
 const sign_in = $("#signIn");
 const sign_up = $("#signUp");
 
 sign_in.click(function() {
     var dataToSend = {
-        "login": user_name.val(),
+        "username": user_name.val(),
         "password": password.val()
     };
     console.log(dataToSend);
@@ -25,7 +25,7 @@ sign_in.click(function() {
 
 sign_up.click(function() {
     var dataToSend = {
-        "login": user_name.val(),
+        "username": user_name.val(),
         "password": password.val()
     };
     console.log(dataToSend);

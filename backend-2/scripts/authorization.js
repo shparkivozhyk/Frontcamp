@@ -11,6 +11,7 @@ const authorization = function(app) {
     app.use(passport.session());
     console.log('2222');
     passport.use(new LocalStrategy(function(username, password, done) {
+        console.log('dddaaaa');
         User.findOne({ username: username }, function (err, user) {
           console.log('ssfffffffff');
           if (err) { return done(err); }
