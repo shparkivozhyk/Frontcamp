@@ -25,12 +25,17 @@ const authorization = function(app) {
         });
       }
     ))
-    passport.serializeUser(function(user, done) {
-        done(null, user);
+    passport.serializeUser(function(user, cb) {
+      cb(null, user.id);
     });
 
-    passport.deserializeUser(function(obj, done) {
-        done(null, obj);
-    })};
+    passport.deserializeUser(function(id, cb) {
+      db.users.findById(id, function (err, user) {
+        if (err) { 
+            return cb(err); 
+        }
+        cb(null, user);
+      });
+    });
 
 module.exports = authorization;

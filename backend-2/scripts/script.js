@@ -15,12 +15,15 @@ sign_in.click(function() {
         "username": user_name.val(),
         "password": password.val()
     };
-    console.log(dataToSend);
-    $.ajax({
-        "method": "POST",
-        "data": dataToSend,
-        "url": '/login'
+    var request = $.ajax({
+        method: "POST",
+        data: dataToSend,
+        url: '/login'
     });
+
+    request.always(function(data, textStatus, req) {
+        window.location = data.redirect;
+    })
 });
 
 sign_up.click(function() {
