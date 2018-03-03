@@ -52,6 +52,7 @@ router.route('/login')
             // var data = JSON.stringify('/blogs');
             // res.setHeader('Content-Type', 'application/json');
             // res.setHeader('Content-Length', data.length);
+            console.log(res);
             if (err) { return next(err)}
             if (!user) {
                 console.log(info);
@@ -65,7 +66,7 @@ router.route('/login')
 
 const Blog = require('./models/Blog');
 // const mongoose = require('mongoose');
-mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
+// mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
 
 router.route('/blogs')
     .get(function(req, res) {
