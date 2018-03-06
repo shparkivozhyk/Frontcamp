@@ -12,9 +12,7 @@ app.set('view engine', 'pug');
 const BlogModel = require('../models/Blog');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
-app.get('/', (req, res) => {
-    res.render('index')
-})
+
 app.get('/blogs', (req, res) => {
 
     BlogModel.find(function(err, blogs) {
