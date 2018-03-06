@@ -1,0 +1,35 @@
+{
+  "name": "styled-components-server-side-rendering",
+  "version": "1.0.0",
+  "description": "React server side rendering with Styled Components",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/server",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jobeir/styled-components-server-side-rendering"
+  },
+  "author": "Dennis Brotzky <dennis@jobeir.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Jobeir/styled-components-server-side-rendering",
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.11.1",
+    "json-loader": "^0.5.4",
+    "webpack": "^3.8.1",
+    "webpack-node-externals": "^1.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.14.0",
+    "mongoose": "^5.0.8",
+    "pug": "^2.0.0-rc.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-components": "^2.2.4"
+  }
+}
