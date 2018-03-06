@@ -43,9 +43,6 @@ class Blogs extends React.Component {
         return (<div>
             <h1>All blogs</h1>
             {this.state.blogs.map(this.eachBlog)}
-            {/*this.state.blogs.forEach((item, i) => {
-                <Blog blog={item} key={i}/>
-            })*/}
         </div>)
     }
 }
