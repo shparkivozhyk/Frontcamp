@@ -14,14 +14,11 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
 
 app.get('/blogs', (req, res) => {
-
     BlogModel.find(function(err, blogs) {
         if (err) {
             res.send(err.message);
         };
-        const body = renderToString(<Blogs blogs={blogs}/>); // <-- collecting styles
-        const title = 'Server side Rendering with Styled Components';
-
+        const body = renderToString(<Blogs blogs={blogs}/>);
         res.render('index', {entry: body})
     });
 });
