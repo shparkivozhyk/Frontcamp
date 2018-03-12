@@ -29,3 +29,5 @@ class NewBlog extends React.Component {
         </div>)
     }
 }
+
+export default NewBlog;

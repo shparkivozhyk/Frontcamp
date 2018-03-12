@@ -20,7 +20,7 @@ class Blogs extends React.Component {
         return (<div>
             <h1 onClick={this.clicker}>All blogs</h1>
             {this.state.blogs.map((blog) => <Blog key={blog._id} blog={blog}/>)}
-            
+            <NewBlog/>
         </div>)
     }
 }
