@@ -17,6 +17,7 @@ const BlogModel = require('../models/Blog');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
 
+<<<<<<< HEAD
 router.route('/blogs')
     .get(function(req, res) {
         BlogModel.find(function(err, blogs) {
@@ -42,5 +43,17 @@ router.route('/blogs')
             }
         });
     }) 
+=======
+app.get('/blogs', (req, res) => {
+    BlogModel.find(function(err, blogs) {
+        if (err) {
+            res.send(err.message);
+        };
+        const body = renderToString(<Blogs blogs={blogs}/>);
+        res.render('index', {entry: body})
+    });
+});
+
+>>>>>>> a9863474dbdb77a9f0528b42847e21d7e9741e11
 app.listen(3000);
 console.log('Serving at http://localhost:3000');
