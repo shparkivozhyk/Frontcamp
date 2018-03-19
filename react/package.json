@@ -1,5 +1,5 @@
 {
-  "name": "styled-components-server-side-rendering",
+  "name": "react-redux-ssr-app",
   "version": "1.0.0",
   "description": "React server side rendering with Styled Components",
   "main": "index.js",
@@ -7,13 +7,8 @@
     "start": "node ./dist/server",
     "build": "webpack --config webpack.config.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Jobeir/styled-components-server-side-rendering"
-  },
-  "author": "Dennis Brotzky <dennis@jobeir.com>",
+  "author": "sparkivozhyk",
   "license": "MIT",
-  "homepage": "https://github.com/Jobeir/styled-components-server-side-rendering",
   "devDependencies": {
     "babel-core": "^6.10.4",
     "babel-loader": "^7.1.2",
@@ -31,7 +26,10 @@
     "pug": "^2.0.0-rc.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "styled-components": "^2.2.4"
   }
 }

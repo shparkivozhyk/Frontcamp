@@ -6,6 +6,7 @@ class NewBlog extends React.Component {
         super(props);
         this.props = props;
         this.formSubmit = this.formSubmit.bind(this);
+        console.log(props);
     }
     formSubmit(e) {
         e.preventDefault();
@@ -21,7 +22,7 @@ class NewBlog extends React.Component {
     }
     render() {
         return (<div>
-            <form onSubmit={this.formSubmit}>
+            <form onSubmit={this.props.formSubmit}>
                 <input type="text" ref={(input) => this.title= input} placeholder="blog title"/>
                 <input type="text" ref={(input) => this.body = input} placeholder="blog text"/>
                 <button type="submit">Create new blog</button>
