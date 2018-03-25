@@ -28,7 +28,6 @@ router.route('/blogs')
             const context = {};
             const store = configureStore(blogs);
             const initialState = store.getState();
-            console.log('yellow submarine');
             const body = renderToString(
                 <Provider store={store}>
                     <StaticRouter location={req.url} context={context}>
@@ -39,29 +38,19 @@ router.route('/blogs')
         });
     })
     .post(function(req, res) {
-        console.log(req);
         BlogModel.create({
             title: req.body.title,
             author: req.body.author,
             body: req.body.body,
-            date: Date.now(),
-            blog_id: req.body.blog_id
+            date: Date.now()
         }, function(err, blogs) {
             if (err) {
                 res.send(err);
             }
+            res.send(blogs);
         });
     }) 
 
-// app.get('/blogs', (req, res) => {
-//     BlogModel.find(function(err, blogs) {
-//         if (err) {
-//             res.send(err.message);
-//         };
-//         const body = renderToString(<StaticRouter><Blogs blogs={blogs}/></StaticRouter>);
-//         res.render('index', {entry: body})
-//     });
-// });
 
 app.listen(3000);
 console.log('Serving at http://localhost:3000');

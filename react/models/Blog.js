@@ -8,8 +8,7 @@ const blogSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    },
-    blog_id: Number
+    }
 });
 
 const Blog = mongoose.model('Blog', blogSchema);

@@ -1,34 +1,41 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import rootReducer from '../redux/reducers/rootReducer';
 
-class NewBlog extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-        this.formSubmit = this.formSubmit.bind(this);
-        console.log(props);
-    }
-    formSubmit(e) {
-        e.preventDefault();
-        axios({
-            method: 'post',
-            url: '/blogs',
-            data: {
-                title: this.title.value,
-                author: 'Unknown',
-                body: this.body.value
-            }
-        });
-    }
-    render() {
-        return (<div>
-            <form onSubmit={this.props.formSubmit}>
-                <input type="text" ref={(input) => this.title= input} placeholder="blog title"/>
-                <input type="text" ref={(input) => this.body = input} placeholder="blog text"/>
-                <button type="submit">Create new blog</button>
-            </form>
-        </div>)
-    }
+const postNewblog = (input) => {
+    return axios.post('/blogs', {
+        title: input.title,
+        body: input.body,
+        author: 'Unknown'
+    })
 }
 
-export default NewBlog;
+const postBlogs = function(input) {
+    return (dispatch) => {  
+            postNewblog(input).then(resp => {
+                dispatch({type: 'POST_BLOG', payload: resp});
+            }).catch(err => {
+                console.log(err);
+            })
+    }
+};
+
+const NewBlog = ({dispatch}) => {
+    let title, body;
+    return (<div>
+        <form onSubmit={(e) => {
+            e.preventDefault();
+            dispatch(postBlogs({
+                title: title.value,
+                body: body.value
+            }));
+        }}>
+            <input type="text" placeholder="blog title" ref={input => title = input}/>
+            <input type="text" placeholder="blog text" ref={input => body = input}/>
+            <button type="submit">Create new blog</button>
+        </form>
+    </div>);
+}
+
+export default connect()(NewBlog);

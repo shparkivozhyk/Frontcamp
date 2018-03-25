@@ -1,11 +1,18 @@
- const rootReducer = (state = [], action) => {
+ import axios from 'axios';
+
+
+const postBlogs = (dispatch) => {
+    dispatch({type: 'CLICK'})
+}
+
+const rootReducer = (state = [], action) => {
         switch (action.type) {
-            case 'CLICK': 
-                console.log('CLICK!!!');
+            case 'POST_BLOG': 
+                return [...state, action.payload.data];
+            case 'GET_BLOGS': 
                 return state;
             default: return state;
         }
     };
 
-
-export default rootReducer;
+export default  rootReducer;
