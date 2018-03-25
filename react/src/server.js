@@ -26,7 +26,7 @@ router.route('/blogs')
                 res.send(err.message);
             };
             const context = {};
-            const store = configureStore(blogs);
+            const store = configureStore({blogs:blogs, filter: ''});
             const initialState = store.getState();
             const body = renderToString(
                 <Provider store={store}>
@@ -34,7 +34,7 @@ router.route('/blogs')
                         <App store={store}/>
                     </StaticRouter>
                 </Provider>);
-            res.render('index', {entry: body, blogs: blogs});
+            res.render('index', {entry: body, state: {blogs: blogs, filter: ''}});
         });
     })
     .post(function(req, res) {

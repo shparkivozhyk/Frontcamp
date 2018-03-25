@@ -3,14 +3,11 @@ import Blog from './Blog';
 import NewBlog from './NewBlog';
 import BlogList from './BlogList';
 import VisibleBlogList from './VisibleBlogList';
-import {postBlogs} from '../redux/reducers/rootReducer';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import Filter from './Filter';
 
 const Blogs = ({store}) => {
-    const blogs = store.getState();
     return (<div>
-
+        <Filter/>
         <VisibleBlogList/>
         <NewBlog/>
     </div>);

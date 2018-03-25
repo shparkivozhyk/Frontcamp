@@ -4,6 +4,6 @@ html
     body
         div(id='react-app') !{entry} 
     script.
-        window.__PRELOADED_STATE__ = !{JSON.stringify(blogs).replace(/</g, '\\u003c')}
+        window.__PRELOADED_STATE__ = !{JSON.stringify(state).replace(/</g, '\\u003c')}
     script
         include ../../../dist/client.js

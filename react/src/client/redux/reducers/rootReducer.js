@@ -1,16 +1,14 @@
  import axios from 'axios';
 
-
-const postBlogs = (dispatch) => {
-    dispatch({type: 'CLICK'})
-}
-
-const rootReducer = (state = [], action) => {
+const rootReducer = (state = {}, action) => {
         switch (action.type) {
             case 'POST_BLOG': 
-                return [...state, action.payload.data];
+                let updatedBlogs = [...state.blogs, action.payload.data];
+                return Object.assign({}, {blogs: updatedBlogs}, {filter: state.filter});
             case 'GET_BLOGS': 
                 return state;
+            case 'FILTER_AUTHOR': 
+                return Object.assign(state, {filter: action.payload});;
             default: return state;
         }
     };
