@@ -1,0 +1,7 @@
+.lists {
+    display: flex;
+}
+
+.todo-list {
+    width: 50%;
+}
