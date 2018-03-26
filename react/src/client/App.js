@@ -4,13 +4,13 @@ import {Provider, connect} from 'react-redux';
 
 import Blogs from './components/Blogs';
 import Blog from './components/Blog';
+import User from './components/User'
 
 const App = ({store}) => {
-  const initialState = store.getState();
   return (
       <Switch>
         <Route path="/blogs" render={() => <Blogs store={store}/>}/>
-        <Route path="/noblogs" component={Blogs} />
+        <Route path="/login" component={User} />
       </Switch>
   )};
 

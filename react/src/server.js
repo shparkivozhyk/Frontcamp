@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import App from './client/App';
 import Blogs from './client/components/Blogs'
 import configureStore from './client/redux/configureStore';
+import loginHandler from './loginHandler';
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -17,8 +18,8 @@ app.use('/', router);
 
 const BlogModel = require('../models/Blog');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
-
+// mongoose.connect('mongodb://shparkivozhyk:blogsdatabase@ds123258.mlab.com:23258/blogs');
+import passportInit from './passportInit';
 router.route('/blogs')
     .get(function(req, res) {
         BlogModel.find(function(err, blogs) {
@@ -51,6 +52,17 @@ router.route('/blogs')
         });
     }) 
 
+router.route('/login')
+    .get(function(req, res, next) {
+        const context = {};
+        const store = configureStore();
+        const body = renderToString(
+                    <StaticRouter location={req.url} context={context}>
+                        <App/>
+                    </StaticRouter>)
+        res.render('index', {entry: body, state: ''});
+    })
+    .post(loginHandler)
 
 app.listen(3000);
 console.log('Serving at http://localhost:3000');
