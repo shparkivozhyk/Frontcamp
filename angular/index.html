@@ -16,7 +16,7 @@
             <div ng-repeat='todo in ctrl.todoList | filter: todo.done === false'>
                 <input type='checkbox' ng-model='todo.done' />
                 <span>{{todo.todo}}</span>
-                <div>{{todo.date}}</div>
+                <div>{{todo.date | date:'medium'}}</div>
             </div> 
             <div>
                 <input type='text' ng-model='ctrl.newTodo'/>
@@ -28,7 +28,7 @@
             <div ng-repeat='todo in ctrl.todoList | filter: !todo.done'>
                 <input type='checkbox' ng-model='todo.done' />
                 <span>{{todo.todo}}</span>
-                <div>{{todo.date}}</div>
+                <div>{{todo.date | date:'medium'}}</div>
             </div> 
         </div>
     </div>
