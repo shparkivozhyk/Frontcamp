@@ -9,28 +9,6 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body ng-app='toDoApp'>
-    <!-- <div ng-controller='toDoController as ctrl'>
-        <div>
-            <button ng-click='ctrl.sortByDate("down")'>Old todos first</button>
-            <button ng-click='ctrl.sortByDate("up")'>New todos first</button>
-            <input type='text' ng-change='ctrl.sortAlphabetically(ctrl.letter)' ng-model='ctrl.letter'>Sort alphabetically</button>
-        </div>
-        <div class='lists'>
-            <list></list>
-            <div class='todo-list'>
-                <h2>Done todos</h2>
-                <div ng-repeat='todo in ctrl.filteredList(true)'>
-                    <div>{{todo.todo}}</div>
-                    <div>{{todo.date | date:'medium'}}</div>
-                    <button ng-click='ctrl.editTodo'>Edit</button>
-                </div> 
-            </div>
-        </div>
-        <form ng-submit='ctrl.addTodo(newTodo)' id='addTodo' name="addTodo">
-            <input type='text' ng-model='ctrl.newTodo' lengthvalidation required/>
-            <button type='submit' ng-disabled='!addTodo.$valid'>Add</button>
-        </form>
-    </div> -->
     <ng-view></ng-view>
     <script src="./index.js"></script>
 </body>
