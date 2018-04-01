@@ -2,6 +2,7 @@
     <h2>{{list.listName}}</h2>
     <div ng-repeat='todo in ctrl.filteredList(list.done)'>
         <div>{{todo.todo}}</div>
+        <div>{{todo.body}}</div>
         <div>{{todo.date | date:'medium'}}</div>
         <div><a ng-href="#!{{ todo.date }}/edit">Edit</a></div>
     </div>

@@ -1,4 +1,11 @@
-<form ng-submit='ctrl.addTodo(newTodo)' id='addTodo' name="addTodo">
-    <input type='text' ng-model='ctrl.newTodo' lengthvalidation required/>
+<form ng-submit='ctrl.addTodo(newTodo)' id='addTodo' name="addTodo" class='adding-form'>
+    <div>
+        <label for='todo-title'>Todo Title</label>
+        <input type='text' id="todo-title" ng-model='ctrl.newTodoTitle' required/>
+    </div>
+    <div>
+        <label for='todo-text'>Todo Text</label>
+        <input type='text' id='todo-text' ng-model='ctrl.newTodoText' lengthvalidation required/>
+    </div>
     <button type='submit' ng-disabled='!addTodo.$valid'>Add</button>
 </form>

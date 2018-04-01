@@ -1,29 +1,12 @@
-var app = angular.module('toDoApp', ['ngRoute']);
+var app = angular.module('toDoApp', ['ngRoute', 'ngResource']);
 
-app.controller('toDoController', function($location) {
+app.controller('toDoController', function($http, $location) {
     var self = this;
-    this.todoList = [
-        {
-            done: true,
-            todo: 'Do nothing',
-            date: 1021096246484
-        },
-        {
-            done: false,
-            todo: 'Show some tasks',
-            date: 1122096245484
-        },
-        {
-            done: false,
-            todo: 'Add a task',
-            date: 1521096244484
-        },
-        {
-            done: true,
-            todo: 'Walk the dog',
-            date: 1222096243484
-        }
-    ];
+    this.todoList = [];
+    $http.get('todos.json')
+        .then(response => {
+            self.todoList = response.data;
+        })
     this.lists = [
         {
             listName:'New todos',
@@ -38,15 +21,21 @@ app.controller('toDoController', function($location) {
         return self.todoList.filter( todo => todo.done === filter);
     }
     this.addTodo = function() {
-        console.log(this.todoList);
+        if ($location.$$path !== '/add') {
+            var id = $location.$$path.split('/')[1];
+            var todoNumber;
+            this.todoList = this.todoList.filter(todo => {
+                return todo.date !== +id;
+            })
+        };
         this.todoList.push({
             done: false,
-            todo: this.newTodo,
-            date: Date.now()
+            title: this.newTodoTitle,
+            body: this.newTodoText,
+            date: +id || Date.now()
 
         })
         $location.path('/');
-        console.log(this.todoList);
     }
     this.sortByDate = function(order) {
         self.todoList = self.todoList.sort((prev, next) => {
@@ -58,14 +47,10 @@ app.controller('toDoController', function($location) {
             }
         })
     };
-    this.sortAlphabetically = function(letter) {
-        return self.todoList.filter((todo) => {
-            if (letter === '') {
-                return todo;
-            }
-            return todo.todo.indexOf(letter) === 0;
+    this.sortAlphabetically = function() {
+        self.todoList = self.todoList.sort((prev, next) => {
+            return prev.todo > next.todo;
         })
-        console.log(self.todoList);
     }
 })
 
@@ -92,6 +77,14 @@ app.directive('list', function(){
     return {
         templateUrl: './templates/list.html',
         controller: 'toDoController'
+    }
+})
+
+app.directive('filters', function() {
+    return {
+        templateUrl: './templates/filters.html',
+        controller: 'toDoController',
+        controllerAs: 'ctrl'
     }
 })
 

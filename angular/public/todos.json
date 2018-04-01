@@ -1,0 +1,26 @@
+[
+    {
+        "done": true,
+        "todo": "Do nothing",
+        "body": "Do nothing and enjoy it",
+        "date": 1021096246484
+    },
+    {
+        "done": false,
+        "todo": "Show some tasks",
+        "body": "and relax",
+        "date": 1122096245484
+    },
+    {
+        "done": false,
+        "todo": "Add a task",
+        "body": "and forget about it",
+        "date": 1521096244484
+    },
+    {
+        "done": true,
+        "todo": "Walk the dog",
+        "body": "and drink milk",
+        "date": 1222096243484
+    }
+]
