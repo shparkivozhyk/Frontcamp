@@ -1,0 +1,4 @@
+<form ng-submit='ctrl.addTodo(newTodo)' id='addTodo' name="addTodo">
+    <input type='text' ng-model='ctrl.newTodo' lengthvalidation required/>
+    <button type='submit' ng-disabled='!addTodo.$valid'>Add</button>
+</form>
