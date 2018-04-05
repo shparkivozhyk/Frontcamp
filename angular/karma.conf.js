@@ -14,8 +14,9 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-      'public/tests/todos.spec.js'
+    files: 
+    [
+        {pattern: './main.js', watched: true}
     ],
 
 

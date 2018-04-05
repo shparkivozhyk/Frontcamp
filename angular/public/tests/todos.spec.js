@@ -1,9 +1,10 @@
 var angular = require('angular');
 require('angular-mocks');
+require('angular-route');
+require('angular-resource');
 require('../index');
 
-describe("YourControllerHere", function() {
-    var $scope;
+describe("app", function() {
     var controller;
 
     beforeEach(function() {
@@ -11,7 +12,7 @@ describe("YourControllerHere", function() {
         angular.mock.module("toDoApp");
 
         inject(function($controller) {
-            controller = $controller("toDoApp");
+            controller = $controller("toDoController");
 
         });
     });
@@ -19,5 +20,4 @@ describe("YourControllerHere", function() {
     it("Should say hello", function() {
         expect(controller.message).toBe("Hello");
     });
-
 });

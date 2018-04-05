@@ -1,6 +1,6 @@
 var app = angular.module('toDoApp', ['ngRoute', 'ngResource']);
 
-app.controller('toDoController', function($http, $location, todoFactory) {
+app.controller('toDoController', function($http, $location) {
     var self = this;
     this.todoList = [];
     this.message = "Hello";
@@ -116,3 +116,5 @@ app.config(function($routeProvider) {
             controllerAs: 'ctrl'
         })
 })
+
+module.exports = app;
