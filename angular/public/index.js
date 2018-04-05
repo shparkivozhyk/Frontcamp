@@ -1,8 +1,9 @@
 var app = angular.module('toDoApp', ['ngRoute', 'ngResource']);
 
-app.controller('toDoController', function($http, $location) {
+app.controller('toDoController', function($http, $location, todoFactory) {
     var self = this;
     this.todoList = [];
+    this.message = "Hello";
     $http.get('todos.json')
         .then(response => {
             self.todoList = response.data;
@@ -53,6 +54,7 @@ app.controller('toDoController', function($http, $location) {
         })
     }
 })
+
 
 app.directive('lengthvalidation', function() {
     return {
