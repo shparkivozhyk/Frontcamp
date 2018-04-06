@@ -1,13 +1,8 @@
 var app = angular.module('toDoApp', ['ngRoute', 'ngResource']);
 
-app.controller('toDoController', function($http, $location) {
+app.controller('toDoController', function($http, $location, todoFactory) {
     var self = this;
     this.todoList = [];
-    this.message = "Hello";
-    $http.get('todos.json')
-        .then(response => {
-            self.todoList = response.data;
-        })
     this.lists = [
         {
             listName:'New todos',
@@ -18,9 +13,38 @@ app.controller('toDoController', function($http, $location) {
             done: true
         }
     ];
+    this.getList = function() {
+        var todoList = [
+            {
+                "done": true,
+                "todo": "Do nothing",
+                "body": "Do nothing and enjoy it",
+                "date": 1021096246484
+            },
+            {
+                "done": false,
+                "todo": "Show some tasks",
+                "body": "and relax",
+                "date": 1122096245484
+            },
+            {
+                "done": false,
+                "todo": "Add a task",
+                "body": "and forget about it",
+                "date": 1521096244484
+            },
+            {
+                "done": true,
+                "todo": "Walk the dog",
+                "body": "and drink milk",
+                "date": 1222096243484
+            }
+        ];
+        self.todoList = todoList;
+    };
     this.filteredList = function(filter) {
         return self.todoList.filter( todo => todo.done === filter);
-    }
+    };
     this.addTodo = function() {
         if ($location.$$path !== '/add') {
             var id = $location.$$path.split('/')[1];
@@ -53,8 +77,14 @@ app.controller('toDoController', function($http, $location) {
             return prev.todo > next.todo;
         })
     }
+    this.getList();
 })
 
+app.factory('todoFactory', function() {
+    return {
+
+    }
+})
 
 app.directive('lengthvalidation', function() {
     return {

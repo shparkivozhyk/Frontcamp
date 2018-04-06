@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Thu Apr 05 2018 20:02:55 GMT+0300 (Belarus Standard Time)
+const path = require('path');
 
 module.exports = function(config) {
   config.set({
@@ -34,7 +35,42 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+            reporters: [
+                {
+                    type: 'html', 
+                    dir: 'reports/coverage/'
+                }, 
+                {
+                    type: 'lcovonly', 
+                    dir: 'reports/coverage/', 
+                    subdir: '.', 
+                    file: 'lcov.info'
+                }
+            ]
+    },
+
+    coverageIstanbulReporter: {
+        reports: ['lcov'],
+        dir: './reports/',
+        fixWebpackSourcePaths: true
+    },
+
+    webpack: {
+            module: {
+                rules: [
+                    {
+                        test: /\.js$/,
+                        include: path.resolve('public/index.js'),
+                        loader: 'istanbul-instrumenter-loader'
+                    },
+                    {test: /\.html$/, loader: 'text-loader'},
+                ]
+            },
+            devtool: 'inline-source-map'
+        },
 
 
     // web server port
